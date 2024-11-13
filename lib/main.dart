@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() => runApp(TicTacToeApp());
 
@@ -243,16 +245,155 @@ class _GameScreenState extends State<GameScreen> {
   }
 }
 
-class LeaderboardScreen extends StatelessWidget {
+class LeaderboardScreen extends StatefulWidget {
+  @override
+  _LeaderboardScreenState createState() => _LeaderboardScreenState();
+}
+
+class _LeaderboardScreenState extends State<LeaderboardScreen> {
+  List<Map<String, dynamic>> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers();
+  }
+
+  Future<void> fetchUsers() async {
+    final url = Uri.parse('https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // Parse JSON response
+      final List<dynamic> data = json.decode(response.body);
+
+      // Convert to list of maps with sorting
+      setState(() {
+        users = data
+            .map((item) => {'id': item['id'], 'score': item['score']})
+            .toList();
+
+        // Sort the list by score in descending order
+        users.sort((a, b) => b['score'].compareTo(a['score']));
+      });
+    } else {
+      print('Failed to load users');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text("Leaderboard")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Leaderboard",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 0.75,
+              padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              child: ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  final user = users[index];
+                  final rank = index + 1; // Ranking starts from 1
+
+                  return ListTile(
+                    leading: Text(
+                      '#$rank',
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    title: Text(
+                      user['id'],
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                    trailing: Text(
+                      'Score: ${user['score']}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }
+/*
+class _LeaderboardScreenState extends State<LeaderboardScreen> {
+  List<String> users = [];
 
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers();
+  }
+
+  Future<void> fetchUsers() async {
+    final url = Uri.parse('https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // Assuming the API returns a JSON array of strings
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        users = data.map((item) => item.toString()).toList();
+      });
+    } else {
+      print('Failed to load users');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Leaderboard",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 0.75,
+              padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              child: ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(users[index]),
+
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: AppBottomNavigationBar(),
+    );
+  }
+}
+// */
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

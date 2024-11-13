@@ -1,0 +1,1 @@
+ /home/eduard/HochschuleMuenchen/MobileAnwendung/MA2-TicTacToe/.dart_tool/flutter_build/f669289d9b851265772c1b3ff58018e6/native_assets.yaml: 

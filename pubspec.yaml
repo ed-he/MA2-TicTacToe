@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^7.0.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
