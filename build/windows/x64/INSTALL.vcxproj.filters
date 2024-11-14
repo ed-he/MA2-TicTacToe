@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\build\windows\x64\CMakeFiles\5aee823350209759bceebd66a02bf38f\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B9E3B3EE-8B25-3F4F-97E9-AD6D6B977229}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

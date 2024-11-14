@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\windows\flutter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B9E3B3EE-8B25-3F4F-97E9-AD6D6B977229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1EE761F8-786C-340E-8B84-587BF7F5F0F1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

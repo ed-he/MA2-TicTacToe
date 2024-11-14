@@ -3,7 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-void main() => runApp(TicTacToeApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(Duration(seconds: 3));
+  runApp(TicTacToeApp());
+}
 
 class TicTacToeApp extends StatelessWidget {
   @override
