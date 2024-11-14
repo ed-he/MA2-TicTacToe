@@ -23,8 +23,16 @@ class TicTacToeApp extends StatelessWidget {
       ),
       GoRoute(
         name: "game",
+        //path: '/game',
+        //builder: (context, state) => GameScreen(),
         path: '/game',
-        builder: (context, state) => GameScreen(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>? ?? {};
+          return GameScreen(
+            player1: extra['player1'] ?? "Player 1",
+            player2: extra['player2'] ?? "Player 2",
+          );
+        },
       ),
       GoRoute(
         name: "leaderboard",
@@ -47,66 +55,76 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(8.0),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                AssetImage('assets/background.jpg'), // Path to your image asset
+            fit: BoxFit.cover, // Makes the image cover the entire screen
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                "Enter Player Names",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: player1Controller,
-                decoration: const InputDecoration(
-                  labelText: "Player 1",
-                  prefixIcon: Icon(Icons.close, color: Colors.blue),
+        ),
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Enter Player Names",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ),
-              TextField(
-                controller: player2Controller,
-                decoration: const InputDecoration(
-                  labelText: "Player 2",
-                  prefixIcon: Icon(Icons.circle_outlined, color: Colors.blue),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: player1Controller,
+                  decoration: const InputDecoration(
+                    labelText: "Player 1",
+                    prefixIcon: Icon(Icons.close, color: Colors.blue),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      player1Controller.clear();
-                      player2Controller.clear();
-                    },
-                    child: const Text("Cancel"),
+                TextField(
+                  controller: player2Controller,
+                  decoration: const InputDecoration(
+                    labelText: "Player 2",
+                    prefixIcon: Icon(Icons.circle_outlined, color: Colors.blue),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (player1Controller.text.isNotEmpty &&
-                          player2Controller.text.isNotEmpty) {
-                        context.go('/game', extra: {
-                          'player1': player1Controller.text,
-                          'player2': player2Controller.text,
-                        });
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Please enter both names")),
-                        );
-                      }
-                    },
-                    child: const Text("Start Game"),
-                  ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        player1Controller.clear();
+                        player2Controller.clear();
+                      },
+                      child: const Text("Cancel"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (player1Controller.text.isNotEmpty &&
+                            player2Controller.text.isNotEmpty) {
+                          context.go('/game', extra: {
+                            'player1': player1Controller.text,
+                            'player2': player2Controller.text,
+                          });
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Please enter both names")),
+                          );
+                        }
+                      },
+                      child: const Text("Start Game"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -116,6 +134,12 @@ class HomeScreen extends StatelessWidget {
 }
 
 class GameScreen extends StatefulWidget {
+  final String player1;
+  final String player2;
+
+  // Accept player names in the constructor
+  GameScreen({required this.player1, required this.player2});
+
   @override
   _GameScreenState createState() => _GameScreenState();
 }
@@ -123,27 +147,32 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   List<String> gridState = ['', '', '', '', '', '', '', '', ''];
   bool isXTurn = true; // To track whose turn it is
-  String player1 = "Player 1"; // You can update these names as needed
-  String player2 = "Player 2";
   String winner = ''; // Variable to store the winner ("X" or "O")
-  List<int> winningCombination = []; // To store the indices of the winning combination
+  List<int> winningCombination =
+      []; // To store the indices of the winning combination
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                AssetImage('assets/background.jpg'), // Path to your image asset
+            fit: BoxFit.cover, // Makes the image cover the entire screen
+          ),
+        ),
+        child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               winner.isEmpty
-                  ? '${isXTurn ? player1 : player2}\'s Turn'
+                  ? '${isXTurn ? widget.player1 : widget.player2}\'s Turn'
                   : winner == "Draw"
-                  ? "Draw!"
-                  : '${winner == 'X' ? player1 : player2} Wins!',
+                      ? "Draw!"
+                      : '${winner == 'X' ? widget.player1 : widget.player2} Wins!',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 64), // Spacer between text and grid
+            const SizedBox(height: 25), // Spacer between text and grid
             Container(
               height: MediaQuery.of(context).size.width * 0.9,
               width: MediaQuery.of(context).size.width * 0.9,
@@ -156,7 +185,7 @@ class _GameScreenState extends State<GameScreen> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                 ),
-                itemCount: 9,  // 9 cells in the grid
+                itemCount: 9, // 9 cells in the grid
                 itemBuilder: (context, index) {
                   int row = index ~/ 3;
                   int col = index % 3;
@@ -176,10 +205,26 @@ class _GameScreenState extends State<GameScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border(
-                          top: row == 0 ? BorderSide.none : const BorderSide(color: Colors.black), // No top border for the first row
-                          left: col == 0 ? BorderSide.none : const BorderSide(color: Colors.black), // No left border for the first column
-                          right: col == 2 ? BorderSide.none : const BorderSide(color: Colors.black), // No right border for the last column
-                          bottom: row == 2 ? BorderSide.none : const BorderSide(color: Colors.black), // No bottom border for the last row
+                          top: row == 0
+                              ? BorderSide.none
+                              : const BorderSide(
+                                  color: Colors
+                                      .black), // No top border for the first row
+                          left: col == 0
+                              ? BorderSide.none
+                              : const BorderSide(
+                                  color: Colors
+                                      .black), // No left border for the first column
+                          right: col == 2
+                              ? BorderSide.none
+                              : const BorderSide(
+                                  color: Colors
+                                      .black), // No right border for the last column
+                          bottom: row == 2
+                              ? BorderSide.none
+                              : const BorderSide(
+                                  color: Colors
+                                      .black), // No bottom border for the last row
                         ),
                         //color: isWinningCell ? Colors.red : Colors.transparent,
                       ),
@@ -187,9 +232,10 @@ class _GameScreenState extends State<GameScreen> {
                         child: Text(
                           gridState[index],
                           style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: isWinningCell ? Colors.red : Colors.black,),
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: isWinningCell ? Colors.red : Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -199,7 +245,7 @@ class _GameScreenState extends State<GameScreen> {
             ),
             const SizedBox(height: 64),
             Text("This is where the ending Buttons will go....")
-          ]
+          ]),
         ),
       ),
       bottomNavigationBar: AppBottomNavigationBar(),
@@ -260,7 +306,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   }
 
   Future<void> fetchUsers() async {
-    final url = Uri.parse('https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
+    final url = Uri.parse(
+        'https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -284,53 +331,64 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Leaderboard",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.7,
-              width: MediaQuery.of(context).size.width * 0.75,
-              padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(25.0),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                AssetImage('assets/background.jpg'), // Path to your image asset
+            fit: BoxFit.cover, // Makes the image cover the entire screen
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Leaderboard",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              child: ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (context, index) {
-                  final user = users[index];
-                  final rank = index + 1; // Ranking starts from 1
+              const SizedBox(height: 20),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.7,
+                width: MediaQuery.of(context).size.width * 0.75,
+                padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                child: ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    final user = users[index];
+                    final rank = index + 1; // Ranking starts from 1
 
-                  return ListTile(
-                    leading: Text(
-                      '#$rank',
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    title: Text(
-                      user['id'],
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    trailing: Text(
-                      'Score: ${user['score']}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  );
-                },
+                    return ListTile(
+                      leading: Text(
+                        '#$rank',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      title: Text(
+                        user['id'],
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      trailing: Text(
+                        'Score: ${user['score']}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }
+
 /*
 class _LeaderboardScreenState extends State<LeaderboardScreen> {
   List<String> users = [];
@@ -423,7 +481,8 @@ class AppBottomNavigationBar extends StatelessWidget {
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.leaderboard), label: 'Leaderboard'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard), label: 'Leaderboard'),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
       ],
       currentIndex: _getSelectedIndex(context),
@@ -431,7 +490,7 @@ class AppBottomNavigationBar extends StatelessWidget {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final location = GoRouter.of(context).location;
+    final location = GoRouter.of(context).routerDelegate.currentConfiguration.fullPath;
     if (location == '/') {
       return 0;
     } else if (location == '/leaderboard') {
