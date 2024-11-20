@@ -152,8 +152,50 @@ class _GameScreenState extends State<GameScreen> {
   List<String> gridState = ['', '', '', '', '', '', '', '', ''];
   bool isXTurn = true; // To track whose turn it is
   String winner = ''; // Variable to store the winner ("X" or "O")
-  List<int> winningCombination =
-      []; // To store the indices of the winning combination
+  List<int> winningCombination = []; // To store the indices of the winning combination
+  List<Map<String, dynamic>> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers();
+  }
+
+  Future<void> fetchUsers() async {
+    final url = Uri.parse(
+        'https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // Parse JSON response
+      final List<dynamic> data = json.decode(response.body);
+
+      // Convert to list of maps with sorting
+      setState(() {
+        users = data
+            .map((item) => {'id': item['id'], 'score': item['score']})
+            .toList();
+
+        // Sort the list by score in descending order
+        users.sort((a, b) => b['score'].compareTo(a['score']));
+      });
+    } else {
+      print('Failed to load users');
+    }
+  }
+
+  Future<void> postUsers() async {
+    final url = Uri.parse(
+        'https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
+
+    String winningPlayer = winner == 'X' ? widget.player1 : widget.player2;
+
+    if (!users.contains(winningPlayer)) {
+      final response = await http.post(url);
+    }
+
+    final response = await http.put(url);
+  }
 
   @override
   Widget build(BuildContext context) {
