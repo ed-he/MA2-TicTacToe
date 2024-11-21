@@ -1,8 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'app_router.dart';
+import 'get_it_setup.dart';
+import 'theme.dart';
+import 'set_theme.dart';
 
+void main() async {
+  setup();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(Duration(seconds: 3));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SetTheme(),
+      child: TicTacToeApp(),
+    ),
+  );
+}
+
+class TicTacToeApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<SetTheme>(builder: (context, setTheme, child) {
+      return MaterialApp.router(
+        routerConfig: AppRouter.router,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: setTheme.themeMode,
+      );
+    });
+  }
+}
+
+/*
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: setTheme.themeMode,
+    );// */
+
+/*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Future.delayed(Duration(seconds: 3));
@@ -10,13 +47,13 @@ void main() async {
 }
 
 class TicTacToeApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _router,
     );
   }
-
   final GoRouter _router = GoRouter(
     initialLocation: '/',
     routes: [
@@ -435,69 +472,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   }
 }
 
-/*
-class _LeaderboardScreenState extends State<LeaderboardScreen> {
-  List<String> users = [];
-
-  @override
-  void initState() {
-    super.initState();
-    fetchUsers();
-  }
-
-  Future<void> fetchUsers() async {
-    final url = Uri.parse('https://dart-leaderboard-rdchfzm4oa-ey.a.run.app/api/players');
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      // Assuming the API returns a JSON array of strings
-      final List<dynamic> data = json.decode(response.body);
-      setState(() {
-        users = data.map((item) => item.toString()).toList();
-      });
-    } else {
-      print('Failed to load users');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Leaderboard",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.7,
-              width: MediaQuery.of(context).size.width * 0.75,
-              padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              child: ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(users[index]),
-
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: AppBottomNavigationBar(),
-    );
-  }
-}
-// */
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -546,4 +520,4 @@ class AppBottomNavigationBar extends StatelessWidget {
     }
     return 0;
   }
-}
+}// */

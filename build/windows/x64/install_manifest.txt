@@ -8,3 +8,4 @@ C:/_noscan/HochschuleMuenchen/Mobile/XoXo/flutter_xoxo/build/windows/x64/runner/
 C:/_noscan/HochschuleMuenchen/Mobile/XoXo/flutter_xoxo/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
 C:/_noscan/HochschuleMuenchen/Mobile/XoXo/flutter_xoxo/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
 C:/_noscan/HochschuleMuenchen/Mobile/XoXo/flutter_xoxo/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag
+C:/_noscan/HochschuleMuenchen/Mobile/XoXo/flutter_xoxo/build/windows/x64/runner/Debug/data/flutter_assets/version.json
