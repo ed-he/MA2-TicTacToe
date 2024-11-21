@@ -3,8 +3,8 @@
 # min_api: 21
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.2"}
-# pg_map_id: b81c5ee
-# pg_map_hash: SHA-256 b81c5ee15b898942d3d4d7207d3e9149576c828588d4ec1590c6fba4d821f53d
+# pg_map_id: e28fe47
+# pg_map_hash: SHA-256 e28fe470c066894fddd95734ba2b01a7c93b20a827050ffc39c935745c52a69b
 _COROUTINE.ArtificialStackFrames -> a.a:
     void <init>() -> <init>
     1:1:java.lang.StackTraceElement coroutineBoundary():0:0 -> a
@@ -3501,6 +3501,8 @@ io.flutter.embedding.engine.FlutterEngine -> io.flutter.embedding.engine.a:
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lz/d;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/r;[Ljava/lang/String;ZZ)V"}
     2:2:void <init>(android.content.Context,io.flutter.embedding.engine.loader.FlutterLoader,io.flutter.embedding.engine.FlutterJNI,io.flutter.plugin.platform.PlatformViewsController,java.lang.String[],boolean,boolean,io.flutter.embedding.engine.FlutterEngineGroup):0:0 -> <init>
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lz/d;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/r;[Ljava/lang/String;ZZLio/flutter/embedding/engine/d;)V"}
+    1:1:io.flutter.embedding.engine.FlutterEngine spawn(android.content.Context,io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint,java.lang.String,java.util.List,io.flutter.plugin.platform.PlatformViewsController,boolean,boolean):0:0 -> A
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lx/a$b;Ljava/lang/String;Ljava/util/List;Lio/flutter/plugin/platform/r;ZZ)Lio/flutter/embedding/engine/a;"}
     1:1:void updateDisplayMetrics(float,float,float):0:0 -> a
     1:1:java.util.Set access$000(io.flutter.embedding.engine.FlutterEngine):0:0 -> b
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lio/flutter/embedding/engine/a;)Ljava/util/Set;"}
@@ -3532,22 +3534,22 @@ io.flutter.embedding.engine.FlutterEngine -> io.flutter.embedding.engine.a:
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/o;"}
     1:1:io.flutter.plugin.platform.PlatformViewsController getPlatformViewsController():0:0 -> q
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Lio/flutter/plugin/platform/r;"}
-    1:1:io.flutter.embedding.engine.systemchannels.ProcessTextChannel getProcessTextChannel():0:0 -> r
+    1:1:io.flutter.embedding.engine.plugins.PluginRegistry getPlugins():0:0 -> r
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()Lb0/b;"}
+    1:1:io.flutter.embedding.engine.systemchannels.ProcessTextChannel getProcessTextChannel():0:0 -> s
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/r;"}
-    1:1:io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer():0:0 -> s
-    1:1:io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel():0:0 -> t
+    1:1:io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer():0:0 -> t
+    1:1:io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel():0:0 -> u
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/s;"}
-    1:1:io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel():0:0 -> u
+    1:1:io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel():0:0 -> v
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/t;"}
-    1:1:io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel():0:0 -> v
+    1:1:io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel():0:0 -> w
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/u;"}
-    1:1:io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel():0:0 -> w
+    1:1:io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel():0:0 -> x
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/v;"}
-    1:1:io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel():0:0 -> x
+    1:1:io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel():0:0 -> y
       # {"id":"com.android.tools.r8.residualsignature","signature":"()Le0/w;"}
-    1:1:boolean isAttachedToJni():0:0 -> y
-    1:1:io.flutter.embedding.engine.FlutterEngine spawn(android.content.Context,io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint,java.lang.String,java.util.List,io.flutter.plugin.platform.PlatformViewsController,boolean,boolean):0:0 -> z
-      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lx/a$b;Ljava/lang/String;Ljava/util/List;Lio/flutter/plugin/platform/r;ZZ)Lio/flutter/embedding/engine/a;"}
+    1:1:boolean isAttachedToJni():0:0 -> z
 io.flutter.embedding.engine.FlutterEngine$1 -> io.flutter.embedding.engine.a$a:
     io.flutter.embedding.engine.FlutterEngine this$0 -> a
     1:1:void onPreEngineRestart():0:0 -> a
@@ -3587,12 +3589,12 @@ io.flutter.embedding.engine.FlutterEngineConnectionRegistry -> io.flutter.embedd
     1:1:void attachToActivity(io.flutter.embedding.android.ExclusiveAppComponent,androidx.lifecycle.Lifecycle):0:0 -> d
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lio/flutter/embedding/android/d;Landroidx/lifecycle/h;)V"}
     1:1:void onNewIntent(android.content.Intent):0:0 -> e
-    1:1:void detachFromActivity():0:0 -> f
-    1:1:void onSaveInstanceState(android.os.Bundle):0:0 -> g
-    1:1:void onUserLeaveHint():0:0 -> h
-    1:1:void detachFromActivityForConfigChanges():0:0 -> i
-    1:1:void add(io.flutter.embedding.engine.plugins.FlutterPlugin):0:0 -> j
+    1:1:void add(io.flutter.embedding.engine.plugins.FlutterPlugin):0:0 -> f
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lb0/a;)V"}
+    1:1:void detachFromActivity():0:0 -> g
+    1:1:void onSaveInstanceState(android.os.Bundle):0:0 -> h
+    1:1:void onUserLeaveHint():0:0 -> i
+    1:1:void detachFromActivityForConfigChanges():0:0 -> j
     1:1:void attachToActivityInternal(android.app.Activity,androidx.lifecycle.Lifecycle):0:0 -> k
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/app/Activity;Landroidx/lifecycle/h;)V"}
     1:1:void destroy():0:0 -> l
@@ -3989,6 +3991,11 @@ io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding -> b0.a$b
     io.flutter.embedding.engine.FlutterEngineGroup group -> g
     1:1:void <init>(android.content.Context,io.flutter.embedding.engine.FlutterEngine,io.flutter.plugin.common.BinaryMessenger,io.flutter.view.TextureRegistry,io.flutter.plugin.platform.PlatformViewRegistry,io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets,io.flutter.embedding.engine.FlutterEngineGroup):0:0 -> <init>
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lio/flutter/embedding/engine/a;Lf0/b;Lio/flutter/view/TextureRegistry;Lio/flutter/plugin/platform/l;Lb0/a$a;Lio/flutter/embedding/engine/d;)V"}
+    1:1:io.flutter.plugin.common.BinaryMessenger getBinaryMessenger():0:0 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()Lf0/b;"}
+io.flutter.embedding.engine.plugins.PluginRegistry -> b0.b:
+    void add(io.flutter.embedding.engine.plugins.FlutterPlugin) -> f
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lb0/a;)V"}
 io.flutter.embedding.engine.plugins.activity.ActivityAware -> c0.a:
     void onDetachedFromActivity() -> c
     void onDetachedFromActivityForConfigChanges() -> f
@@ -4003,10 +4010,10 @@ io.flutter.embedding.engine.plugins.activity.ActivityControlSurface -> c0.b:
     void attachToActivity(io.flutter.embedding.android.ExclusiveAppComponent,androidx.lifecycle.Lifecycle) -> d
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lio/flutter/embedding/android/d;Landroidx/lifecycle/h;)V"}
     void onNewIntent(android.content.Intent) -> e
-    void detachFromActivity() -> f
-    void onSaveInstanceState(android.os.Bundle) -> g
-    void onUserLeaveHint() -> h
-    void detachFromActivityForConfigChanges() -> i
+    void detachFromActivity() -> g
+    void onSaveInstanceState(android.os.Bundle) -> h
+    void onUserLeaveHint() -> i
+    void detachFromActivityForConfigChanges() -> j
 io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding -> c0.c:
     android.app.Activity getActivity() -> a
     void removeActivityResultListener(io.flutter.plugin.common.PluginRegistry$ActivityResultListener) -> b
@@ -5102,9 +5109,11 @@ io.flutter.plugin.common.MethodChannel -> f0.i:
     io.flutter.plugin.common.BinaryMessenger messenger -> a
     java.lang.String name -> b
     io.flutter.plugin.common.MethodCodec codec -> c
-    1:1:void <init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.MethodCodec):0:0 -> <init>
+    1:1:void <init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String):0:0 -> <init>
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lf0/b;Ljava/lang/String;)V"}
+    2:2:void <init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.MethodCodec):0:0 -> <init>
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lf0/b;Ljava/lang/String;Lf0/j;)V"}
-    2:2:void <init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.MethodCodec,io.flutter.plugin.common.BinaryMessenger$TaskQueue):0:0 -> <init>
+    3:3:void <init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.MethodCodec,io.flutter.plugin.common.BinaryMessenger$TaskQueue):0:0 -> <init>
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lf0/b;Ljava/lang/String;Lf0/j;Lf0/b$c;)V"}
     1:1:io.flutter.plugin.common.MethodCodec access$000(io.flutter.plugin.common.MethodChannel):0:0 -> a
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Lf0/i;)Lf0/j;"}
@@ -10101,3 +10110,12 @@ kotlinx.coroutines.scheduling.WorkQueue -> j1.n:
       # {"id":"com.android.tools.r8.residualsignature","signature":"(ILv0/q;)J"}
     1:1:long tryStealLastScheduled(int,kotlin.jvm.internal.Ref$ObjectRef):0:0 -> o
       # {"id":"com.android.tools.r8.residualsignature","signature":"(ILv0/q;)J"}
+net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin -> k1.a:
+    io.flutter.plugin.common.MethodChannel channel -> a
+    void <init>() -> <init>
+    1:1:void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result):0:0 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lf0/h;Lf0/i$d;)V"}
+    1:1:void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):0:0 -> d
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lb0/a$b;)V"}
+    1:1:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):0:0 -> i
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lb0/a$b;)V"}

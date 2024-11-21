@@ -1,0 +1,1 @@
+ C:\\_noscan\\HochschuleMuenchen\\Mobile\\XoXo\\flutter_xoxo\\.dart_tool\\flutter_build\\68b9f8404e91168ce5ab046697d73ac5\\native_assets.yaml: 

@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import './bottom_nav_view.dart';
 
-class HomeScreen extends StatelessWidget {
-  final TextEditingController player1Controller = TextEditingController();
-  final TextEditingController player2Controller = TextEditingController();
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController player1Controller = TextEditingController();
+  TextEditingController player2Controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             AssetImage('assets/background.jpg'), // Path to your image asset
             fit: BoxFit.cover, // Makes the image cover the entire screen
           ),
-        ),
+        ),// */
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.8,
@@ -78,7 +89,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }

@@ -1,4 +1,4 @@
-#Thu Nov 14 21:19:09 CET 2024
+#Thu Nov 21 18:31:18 CET 2024
 base.0=C\:\\_noscan\\HochschuleMuenchen\\Mobile\\XoXo\\flutter_xoxo\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

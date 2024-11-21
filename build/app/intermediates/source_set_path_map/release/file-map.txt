@@ -26,3 +26,4 @@ com.example.flutter_xoxo.app-packageReleaseResources-24 C:\_noscan\HochschuleMue
 com.example.flutter_xoxo.app-packageReleaseResources-25 C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\build\app\intermediates\incremental\release\packageReleaseResources\stripped.dir
 com.example.flutter_xoxo.app-merged-not-compiled-resources-26 C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\build\app\intermediates\merged-not-compiled-resources\release
 com.example.flutter_xoxo.app-merged_res-27 C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\build\app\intermediates\merged_res\release
+com.example.flutter_xoxo.app-packaged_res-28 C:\_noscan\HochschuleMuenchen\Mobile\XoXo\flutter_xoxo\build\flutter_native_splash\intermediates\packaged_res\release

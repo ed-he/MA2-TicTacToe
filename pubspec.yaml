@@ -17,7 +17,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.17
+  build_runner: ^2.3.3
   flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.2.19
+
+flutter_native_splash:
+  color: "#32ff21" # Background color
+  image: assets/background.jpg # Path to your logo/image
+  android: true # Enable for Android
+  ios: true # Enable for iOS
 
 flutter:
   uses-material-design: true

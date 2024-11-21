@@ -587,6 +587,7 @@ domain
 kotlin.jvm.internal.StringCompanionOb...
 viewType
 editingValue
+getPlatformVersion
 SidecarCompat
 getResPackage
 DROP_LATEST
@@ -827,6 +828,7 @@ BOTTOM_OVERLAYS
 CUT
 $this$require
 kotlin.Array
+flutter_native_splash
 accept
 input_method
 oldText
@@ -1165,6 +1167,7 @@ Marking id:action_text:2131165220 used because it matches string pool constant a
 Marking id:actions:2131165221 used because it matches string pool constant action
 Marking id:text:2131165267 used because it matches string pool constant text
 Marking id:text2:2131165268 used because it matches string pool constant text
+Marking drawable:background:2131099648 used because it matches string pool constant background
 Marking attr:activityAction:2130903040 used because it matches string pool constant activity
 Marking attr:activityName:2130903041 used because it matches string pool constant activity
 Marking attr:tag:2130903076 used because it matches string pool constant tag
@@ -1259,6 +1262,7 @@ Marking id:tag_window_insets_animation_callback:2131165266 used because it match
 @dimen/notification_subtext_size : reachable=false
 @dimen/notification_top_pad : reachable=false
 @dimen/notification_top_pad_large_text : reachable=false
+@drawable/background : reachable=true
 @drawable/ic_call_answer : reachable=false
 @drawable/ic_call_answer_low : reachable=false
 @drawable/ic_call_answer_video : reachable=false
@@ -1266,6 +1270,8 @@ Marking id:tag_window_insets_animation_callback:2131165266 used because it match
 @drawable/ic_call_decline : reachable=false
 @drawable/ic_call_decline_low : reachable=false
 @drawable/launch_background : reachable=false
+    @drawable/background
+    @drawable/splash
 @drawable/notification_action_background : reachable=false
     @color/androidx_core_ripple_material_light
     @dimen/compat_button_inset_horizontal_material
@@ -1291,6 +1297,7 @@ Marking id:tag_window_insets_animation_callback:2131165266 used because it match
 @drawable/notification_tile_bg : reachable=false
     @drawable/notify_panel_notification_icon_bg
 @drawable/notify_panel_notification_icon_bg : reachable=false
+@drawable/splash : reachable=false
 @id/accessibility_action_clickable_span : reachable=true
 @id/accessibility_custom_action_0 : reachable=true
 @id/accessibility_custom_action_1 : reachable=true
@@ -1445,6 +1452,7 @@ The root reachable resources are:
  attr:tag:2130903076
  color:androidx_core_ripple_material_light:2130968576
  color:androidx_core_secondary_text_default_material_light:2130968577
+ drawable:background:2131099648
  id:accessibility_action_clickable_span:2131165184
  id:accessibility_custom_action_0:2131165185
  id:accessibility_custom_action_1:2131165186
@@ -1545,25 +1553,25 @@ Unused resources are:
  dimen:notification_subtext_size:2131034131
  dimen:notification_top_pad:2131034132
  dimen:notification_top_pad_large_text:2131034133
- drawable:ic_call_answer:2131099648
- drawable:ic_call_answer_low:2131099649
- drawable:ic_call_answer_video:2131099650
- drawable:ic_call_answer_video_low:2131099651
- drawable:ic_call_decline:2131099652
- drawable:ic_call_decline_low:2131099653
- drawable:notification_action_background:2131099655
- drawable:notification_bg:2131099656
- drawable:notification_bg_low:2131099657
- drawable:notification_bg_low_normal:2131099658
- drawable:notification_bg_low_pressed:2131099659
- drawable:notification_bg_normal:2131099660
- drawable:notification_bg_normal_pressed:2131099661
- drawable:notification_icon_background:2131099662
- drawable:notification_oversize_large_icon_bg:2131099663
- drawable:notification_template_icon_bg:2131099664
- drawable:notification_template_icon_low_bg:2131099665
- drawable:notification_tile_bg:2131099666
- drawable:notify_panel_notification_icon_bg:2131099667
+ drawable:ic_call_answer:2131099649
+ drawable:ic_call_answer_low:2131099650
+ drawable:ic_call_answer_video:2131099651
+ drawable:ic_call_answer_video_low:2131099652
+ drawable:ic_call_decline:2131099653
+ drawable:ic_call_decline_low:2131099654
+ drawable:notification_action_background:2131099656
+ drawable:notification_bg:2131099657
+ drawable:notification_bg_low:2131099658
+ drawable:notification_bg_low_normal:2131099659
+ drawable:notification_bg_low_pressed:2131099660
+ drawable:notification_bg_normal:2131099661
+ drawable:notification_bg_normal_pressed:2131099662
+ drawable:notification_icon_background:2131099663
+ drawable:notification_oversize_large_icon_bg:2131099664
+ drawable:notification_template_icon_bg:2131099665
+ drawable:notification_template_icon_low_bg:2131099666
+ drawable:notification_tile_bg:2131099667
+ drawable:notify_panel_notification_icon_bg:2131099668
  id:adjacent:2131165222
  id:always:2131165223
  id:alwaysAllow:2131165224

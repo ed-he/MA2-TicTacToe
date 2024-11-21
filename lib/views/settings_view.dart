@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xoxo/set_theme.dart';
 import 'package:provider/provider.dart';
-import './bottom_nav_view.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -23,14 +22,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             image: AssetImage('assets/background.jpg'), // Path to your image asset
             fit: BoxFit.cover, // Makes the image cover the entire screen
           ),
-        ),
+        ),// */
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
               Container(
-                height: MediaQuery.of(context).size.height * 0.7, // Adjust the height as needed
+                //height: MediaQuery.of(context).size.height * 0.7, // Adjust the height as needed
                 width: MediaQuery.of(context).size.width * 0.75, // Adjust the width as needed
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -54,7 +53,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }

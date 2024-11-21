@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
-import './bottom_nav_view.dart';
 import '../repositories/leaderboard/leaderboard_repository.dart';
 import '../models/player.dart';
 
 class LeaderboardScreen extends StatefulWidget {
+  LeaderboardScreen({Key? key}) : super(key: key);
+
   @override
   _LeaderboardScreenState createState() => _LeaderboardScreenState();
 }
@@ -35,7 +35,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             image: AssetImage('assets/background.jpg'), // Path to your image asset
             fit: BoxFit.cover, // Makes the image cover the entire screen
           ),
-        ),
+        ),// */
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +105,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 
