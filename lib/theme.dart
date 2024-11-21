@@ -16,7 +16,7 @@ final ThemeData lightTheme = ThemeData(
 
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primaryColor: const Color.fromARGB(255, 19, 20, 41),
+  primaryColor: const Color.fromARGB(255, 0, 0, 0),
   scaffoldBackgroundColor: Colors.transparent,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.transparent,

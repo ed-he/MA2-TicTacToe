@@ -8,13 +8,6 @@ import 'views/bottom_nav_view.dart';
 
 
 class AppRouter {
-  /*
-  static final GlobalKey<NavigatorState> _navigatorKeyDefault = GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _navigatorKeyHome = GlobalKey<NavigatorState>(debugLabel: 'Home');
-  static final GlobalKey<NavigatorState> _navigatorKeyLeaderboard = GlobalKey<NavigatorState>(debugLabel: 'Leaderboard');
-  static final GlobalKey<NavigatorState> _navigatorKeySettings = GlobalKey<NavigatorState>(debugLabel: 'Settings');
-  static final GlobalKey<NavigatorState> _navigatorKeyGame = GlobalKey<NavigatorState>(debugLabel: 'Game');// */
-
   static final GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [
